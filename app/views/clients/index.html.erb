@@ -1,0 +1,10 @@
+<h1>Clients#index</h1>
+<ul>
+  <% @clients.each do |client| %>
+    <li>
+      <a href="/clients/<%= client.id %>">
+        <%= client.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
