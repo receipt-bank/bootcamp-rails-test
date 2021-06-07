@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/clients/index'
-  get '/clients/new'
+  get '/clients/new', to: 'clients#new'
   get '/clients/edit'
   get '/clients/delete'
   # are these routes covered by 'resources: clients' ?

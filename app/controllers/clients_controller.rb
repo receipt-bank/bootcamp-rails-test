@@ -13,6 +13,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    @client.user_id = current_user.id
 
     if @client.save
       redirect_to @client
@@ -29,6 +30,6 @@ class ClientsController < ApplicationController
 
   private
     def client_params
-      params.require(:client).permit(:name, :provider, :business_type).merge(user_id: current_user.id)
+      params.require(:client).permit(:name, :provider, :business_type)
     end
 end
