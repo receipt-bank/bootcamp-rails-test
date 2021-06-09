@@ -1,8 +1,19 @@
 <% if user_signed_in? %>
     <nav class="subnav">
+        <h3>Your Teams</h3>
+        <li>
+            <% @user = User.find(current_user.id) %>
+            <% @teams = @user.teams %>
+
+            <% @teams.each do |t| %>
+                <li>
+                    <a href="/teams/<%= t.id %>">
+                        <%= t.name %>
+                    </a>
+                </li>
+            <% end %>
+        </li>
         <ul>
-            <li><%= link_to('My Clients', clients_index_path) %></li>
-            <li><%= link_to('Add Client', clients_new_path) %></li>
             <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
         </ul>

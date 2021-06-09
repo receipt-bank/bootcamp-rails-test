@@ -24,7 +24,7 @@ default: &default
 development:
   development:
   adapter: postgresql
-  database: test_db
+  database: productivity_test
   host: localhost
   username: oliversiket
   password: root

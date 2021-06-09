@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
     @client.user_id = current_user.id
 
     if @client.save
-      redirect_to @client
+      format.html { redirect_to @client, notice: 'Client was successfully created.' }
     else
       render :new
     end

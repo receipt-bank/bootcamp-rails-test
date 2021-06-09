@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'dashboard/index'
+  get 'dashboard/index', to: 'dashboard#index', as: 'dashboard'
   root to: "home#index"
 
   devise_for :users
 
-  get '/clients/index'
-  get '/clients/new', to: 'clients#new'
-  get '/clients/edit'
-  get '/clients/delete'
-  # are these routes covered by 'resources: clients' ?
-
-  get '/clients/:id', to: 'clients#show'
-
-  post '/clients/new', to: 'clients#create'
-
-  resources :clients
+  resources :teams do
+    resources :clients
+  end
+  # resources :clients
 end
